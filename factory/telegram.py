@@ -12,7 +12,7 @@ def telegram_client(session_name=uuid.uuid4().hex):
         Constants.API_ID,
         Constants.API_HASH,
         proxy={
-            "proxy_type": socks.HTTP,
+            "proxy_type": 'HTTP',
             "addr": Constants.PROXY_URL,
             "port": Constants.PROXY_PORT,
             "username": Constants.PROXY_USERNAME,

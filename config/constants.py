@@ -15,4 +15,4 @@ class Constants:
     PROXY_URL = os.environ.get("PROXY_URL", None)
     PROXY_PORT = int(os.environ.get("PROXY_PORT")) if os.environ.get("PROXY_PORT") else None
     PROXY_USERNAME = os.environ.get("PROXY_USERNAME", None)
-    PROXY_PASSWORD = os.environ.get("PROXY_password", None)
+    PROXY_PASSWORD = os.environ.get("PROXY_PASSWORD", None)
