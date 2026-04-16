@@ -12,3 +12,7 @@ class Constants:
     API_KEY_BOT = os.environ.get("API_KEY_BOT")
     LOG_DB_URL = os.environ.get("LOG_DB_URL")
     FEEDMER_DB_URL = os.environ.get("FEEDMER_DB_URL")
+    PROXY_URL = os.environ.get("PROXY_URL", None)
+    PROXY_PORT = os.environ.get("PROXY_PORT", None)
+    PROXY_USERNAME = os.environ.get("PROXY_USERNAME", None)
+    PROXY_PASSWORD = os.environ.get("PROXY_password", None)

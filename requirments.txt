@@ -4,3 +4,4 @@ APScheduler==3.10.1
 SQLAlchemy==1.4.48
 prometheus-client
 psycopg2-binary
+pysocks
