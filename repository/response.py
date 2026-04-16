@@ -41,10 +41,7 @@ class ResponseRepository:
             stddev_pop("time") "dev_time", 
             COUNT(*) as total,
             ROUND(SUM(CASE WHEN "time" < 1 THEN 1 ELSE 0 END)::decimal/COUNT(*)*100, 2) "0_1",
-            ROUND(SUM(CASE WHEN "time" BETWEEN 1 AND 2 THEN 1 ELSE 0 END)::decimal/COUNT(*)*100, 2) "1_2",
-            ROUND(SUM(CASE WHEN "time" BETWEEN 2 AND 3 THEN 1 ELSE 0 END)::decimal/COUNT(*)*100, 2) "2_3",
-            ROUND(SUM(CASE WHEN "time" BETWEEN 3 AND 4 THEN 1 ELSE 0 END)::decimal/COUNT(*)*100, 2) "3_4",
-            ROUND(SUM(CASE WHEN "time" BETWEEN 4 AND 5 THEN 1 ELSE 0 END)::decimal/COUNT(*)*100, 2) "4_5",
+            ROUND(SUM(CASE WHEN "time" BETWEEN 1 AND 5 THEN 1 ELSE 0 END)::decimal/COUNT(*)*100, 2) "1_5",
             ROUND(SUM(CASE WHEN "time" > 5 THEN 1 ELSE 0 END)::decimal/COUNT(*)*100, 2) "5_"
             FROM public.response
             WHERE date_trunc('day', stamp) = date_trunc('day', now())
@@ -58,11 +55,8 @@ class ResponseRepository:
                 "deviation": result["dev_time"],
                 "total": result["total"],
                 "first_bucket": result["0_1"],
-                "second_bucket": result["1_2"],
-                "third_bucket": result["2_3"],
-                "fourth_bucket": result["3_4"],
-                "fifth_bucket": result["4_5"],
-                "sixth_bucket": result["5_"],
+                "second_bucket": result["1_5"],
+                "third_bucket": result["5_"],
             },
             stats
         )

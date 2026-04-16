@@ -1,6 +1,10 @@
 import logging
+import uuid
 import time
 import random
+
+from telethon import hints
+from telethon.tl.types import InputPeerUser
 
 import factory.telegram as telegram_factory
 from service.phone import PhoneService
@@ -22,10 +26,16 @@ class TelegramService:
         return client
 
     async def login_bot(self, api: str):
-        client = telegram_factory.telegram_client("testBot")
+        client = telegram_factory.telegram_client(str(hex(hash(api))))
         me = await client.start(bot_token=api)
         logging.debug(f"Logged in: {me}")
         return client
 
-    async def send_message(self, client, recipient: str, text: str):
+    async def send_message(self, client, recipient: str | InputPeerUser, text: str):
         await client.send_message(recipient, text)
+
+    async def get_bot_name(self, api: str) -> hints.Entity:
+        client = await self.login_bot(api)
+        bot = await client.get_me(input_peer=False)
+        await client.log_out()
+        return bot

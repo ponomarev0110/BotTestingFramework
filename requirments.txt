@@ -1,0 +1,7 @@
+asgiref==3.7.2
+telethon==1.29.2
+APScheduler==3.10.1
+SQLAlchemy==1.4.48
+prometheus-client
+psycopg2-binary
+pysocks

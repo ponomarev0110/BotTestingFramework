@@ -1,19 +1,24 @@
 from config.constants import Constants
-from service.phone import PhoneService
-from service.telegram import TelegramService
-from service.test import TestService
+from service import BotService, PhoneService, TelegramService, TestService
 from factory.repository import RepositoryFactory
 
 
 class ServiceFactory:
-    __slots__ = ["_repository_factory", "_phone", "_telegram", "_test"]
+    __slots__ = ["_repository_factory", "_bot", "_phone", "_telegram", "_test"]
     instance = None
 
     def __init__(self):
         self._repository_factory = RepositoryFactory()
-        self._telegram = None
+        self._bot = None
         self._phone = None
+        self._telegram = None
         self._test = None
+
+    @property
+    def bot(self) -> BotService:
+        if self._bot is None:
+            self._bot = BotService(self._repository_factory.bot)
+        return self._bot
 
     @property
     def phone(self) -> PhoneService:
