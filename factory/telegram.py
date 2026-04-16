@@ -11,12 +11,13 @@ def telegram_client(session_name=uuid.uuid4().hex):
         session_name,
         Constants.API_ID,
         Constants.API_HASH,
-        proxy = {
-            "type": socks.HTTP,
+        proxy={
+            "proxy_type": socks.HTTP,
             "addr": Constants.PROXY_URL,
             "port": Constants.PROXY_PORT,
             "username": Constants.PROXY_USERNAME,
             'password': Constants.PROXY_PASSWORD,
+            'rdns': True
         }
     )
     return client
